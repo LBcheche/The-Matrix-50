@@ -197,10 +197,17 @@ function MatrixCodeLine:checkOverwriting(newChar)
     
 end
 
+function MatrixCodeLine:chooseColor()
 
+    self.allColors = {"pink", "purple", "blue","green", "yellow"}
+    self.rgbColor = gRGBColors[self.allColors[math.random(5)]]
+
+end
 
 -- Function responsable for create a new Matrix Char object
 function MatrixCodeLine:createAChar()
+
+   -- self:chooseColor()
 
     return MatrixChar(
         {

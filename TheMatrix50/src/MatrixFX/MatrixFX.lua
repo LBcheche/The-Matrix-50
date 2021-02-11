@@ -171,11 +171,19 @@ function MatrixFX:addCodeLinesOnMatrix()
 
 end
 
+function MatrixFX:chooseColor()
+
+    self.allColors = {"pink", "purple", "blue","green", "yellow"}
+    self.rgbColor = gRGBColors[self.allColors[math.random(5)]]
+
+end
 
 
 -- Function responsable for instatiate a new 
 -- code line object. 
 function MatrixFX:createCodeLine()
+
+    self:chooseColor()
 
     return MatrixCodeLine(
         {

@@ -55,16 +55,16 @@ gColors = {
 }
 
 gRGBColors = {
-    ['green'] = {name = 'green', r = 106, g = 153, b = 105},
-    ['pink'] = {name = 'pink',r = 197, g = 134, b =192},
+    ['green'] = {name = 'green', r = 107, g = 193, b = 190},
+    ['pink'] = {name = 'pink',r = 235, g = 18, b =123},
     ['white'] = {name = 'white',r = 255, g = 255, b =255},
     ['red'] = {name = 'red',r = 156 , g = 30, b = 64},
     ['black'] = {name = 'black',r = 0 , g = 0, b = 0},
-    ['purple'] = {name = 'purple',r = 187 , g = 218, b = 255},
-    ['blue'] = {name = 'blue',r = 0 , g = 36, b = 81},
+    ['purple'] = {name = 'purple',r = 130 , g = 87, b = 230},
+    ['blue'] = {name = 'blue',r = 38 , g = 139, b = 187},
     ['total green'] = {name = 'total green',r = 0 , g = 255, b = 0},
     ['total red'] = {name = 'total red',r = 255 , g = 0, b = 0},
-    ['yellow'] = {name = 'yellow', r= 220, g=220, b=170},
+    ['yellow'] = {name = 'yellow', r= 255, g=255, b=121},
     ['orange'] = {name = 'orange', r= 236, g=107, b=0},
 }
 
@@ -118,9 +118,9 @@ gMatrixParams = {
         ]]
         
         font = gFonts['japanese'].font,  -- char's codeline font
-        colorVariation = 1, -- color range for saturation and lightness in %
+        colorVariation = 10, -- color range for saturation and lightness in %
         changingTime = 0.15, -- frequency to change the codeline in seconds
-        rgbColor = gRGBColors['red'], -- table that represents a color of char's font:  {r = , g= , b= }
+        rgbColor = gRGBColors['green'], -- table that represents a color of char's font:  {r = , g= , b= }
         direction = 'left', -- char's writing direction 
         ASCIICodes = gASCIICodes['alphanumeric'].codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
         initialAlphaSetup = 255, -- char's initial alpha setup before defaut fade off (first fade off)

@@ -9,6 +9,8 @@
 
 require 'src/Constants'
 
+
+
 function love.load()
     -- set random number for RGB in gray scale 
     math.randomseed(os.time())
@@ -17,8 +19,9 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
 
     -- app window title
-    love.window.setTitle('The Matrix 50')
-
+    -- love.window.setTitle('The Matrix 50')
+    -- love.window.setFullscreen( true )
+    -- love.window.maximize()
     -- initialize our virtual resolution
  
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
@@ -37,6 +40,8 @@ function love.load()
     love.keyboard.keysPressed = {}
 
 end
+
+
 
 function love.update(dt)
     
@@ -67,12 +72,9 @@ end
 
 function love.draw()
     --gStateMachine:render()
-    
     push:start()
         gStateMachine:render() 
     push:finish()
-
     
-
 end
 
