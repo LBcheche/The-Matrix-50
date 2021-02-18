@@ -183,7 +183,7 @@ end
 -- code line object. 
 function MatrixFX:createCodeLine()
 
-    self:chooseColor()
+    --self:chooseColor()
 
     return MatrixCodeLine(
         {

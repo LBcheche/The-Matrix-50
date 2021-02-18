@@ -57,6 +57,8 @@ function MatrixChar:init(params)
     self:initializeDefaultFadeOffDelayTimer()
     self:initializeDefaultFadeOff()
     self:initializeRemotionFadeOff()
+
+    
     
     
 
@@ -272,6 +274,7 @@ function MatrixChar:print()
 
     self.newY = self.y + self.font:getHeight()/2
 
+--    effect(function()
     love.graphics.print(
         self.char, 
         math.floor(self.newX),
@@ -283,6 +286,7 @@ function MatrixChar:print()
         math.floor(self.font:getHeight()/2), 
         math.floor(self.font:getHeight()/2)
     )
+--    end)
 
 end
 

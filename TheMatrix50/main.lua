@@ -9,9 +9,18 @@
 
 require 'src/Constants'
 
+Moonshine = require 'src/moonshine'
 
 
 function love.load()
+
+    effect = Moonshine(Moonshine.effects.godsray)--.chain(Moonshine.effects.dmg)
+    -- effect.glow.strength = 1
+    -- effect.glow.min_luma = 0.1
+    -- effect.boxblur.radius_x = 5
+    -- effect.boxblur.radius_y = 5
+    -- effect.dmg.palette = dark_yellow
+
     -- set random number for RGB in gray scale 
     math.randomseed(os.time())
 
@@ -73,8 +82,14 @@ end
 function love.draw()
     --gStateMachine:render()
     push:start()
-        gStateMachine:render() 
+    effect(function()
+     gStateMachine:render() 
+    end)
+   -- gStateMachine:render()
+
     push:finish()
+
+    
     
 end
 
