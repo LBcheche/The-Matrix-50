@@ -93,8 +93,8 @@ end
 -- Function responsable for setup a random coordinates for a this code line
 function MatrixCodeLine:initializeCoordinates()
 
-    self.x = math.random(0, self.widthInChar - 1) * self.font:getHeight()
-    self.y = math.random(0,math.floor(self.heightInChar - self.codeLineHeightInChar)) * self.font:getHeight()
+    self.x = math.random(0, self.widthInChar - 1) * (self.font:getHeight())
+    self.y = math.random(0,math.floor(self.heightInChar - self.codeLineHeightInChar)) * (self.font:getHeight())
 
 end
 
@@ -199,15 +199,15 @@ end
 
 function MatrixCodeLine:chooseColor()
 
-    self.allColors = {"pink", "purple", "blue","green", "yellow"}
-    self.rgbColor = gRGBColors[self.allColors[math.random(5)]]
+    self.allColors = {"vscode1","vscode1", "vscode1","vscode2","vscode3","vscode4","vscode5","vscode6","vscode7","vscode8","vscode8","vscode8","vscode9", "vscode10","vscode10","vscode10", "vscode11", "vscode12"}--{"pink", "purple", "blue","green", "yellow"}
+    self.rgbColor = gRGBColors[self.allColors[math.random(#self.allColors)]]
 
 end
 
 -- Function responsable for create a new Matrix Char object
 function MatrixCodeLine:createAChar()
 
-   -- self:chooseColor()
+--   self:chooseColor()
 
     return MatrixChar(
         {

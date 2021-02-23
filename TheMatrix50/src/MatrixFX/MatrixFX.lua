@@ -173,8 +173,9 @@ end
 
 function MatrixFX:chooseColor()
 
-    self.allColors = {"pink", "purple", "blue","green", "yellow"}
-    self.rgbColor = gRGBColors[self.allColors[math.random(5)]]
+    self.allColors = {"vscode1","vscode1", "vscode1","vscode2","vscode3","vscode4","vscode8","vscode8","vscode8", "vscode10","vscode10","vscode10", "vscode11", "vscode12"}--{"pink", "purple", "blue","green", "yellow"}
+    self.rgbColor = gRGBColors[self.allColors[math.random(#self.allColors)]]
+
 
 end
 
@@ -183,7 +184,7 @@ end
 -- code line object. 
 function MatrixFX:createCodeLine()
 
-    --self:chooseColor()
+    self:chooseColor()
 
     return MatrixCodeLine(
         {

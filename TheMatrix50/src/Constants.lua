@@ -71,6 +71,20 @@ gRGBColors = {
     ['total red'] = {name = 'total red',r = 255 , g = 0, b = 0},
     ['yellow'] = {name = 'yellow', r= 255, g=255, b=121},
     ['orange'] = {name = 'orange', r= 236, g=107, b=0},
+
+    ['vscode1'] = {name = 'vscode1', r= 86, g=156, b=214},
+    ['vscode2'] = {name = 'vscode2', r= 206, g=145, b=120},
+    ['vscode3'] = {name = 'vscode3', r= 181, g=206, b=168},
+    ['vscode4'] = {name = 'vscode4', r= 106, g=153, b=85},
+    ['vscode5'] = {name = 'vscode5', r= 215, g=186, b=125},
+    ['vscode6'] = {name = 'vscode6', r= 244, g=71, b=71},
+    ['vscode7'] = {name = 'vscode7', r= 128, g=128, b=128},
+    ['vscode8'] = {name = 'vscode8', r=156 , g=220, b=254},
+    ['vscode9'] = {name = 'vscode9', r= 209, g=105, b=105},
+    ['vscode10'] = {name = 'vscode10', r=197 , g=134, b=192},
+    ['vscode11'] = {name = 'vscode11', r=220 , g=220, b=170},
+    ['vscode12'] = {name = 'vscode12', r= 78, g=201, b=176}
+
 }
 
 gASCIICodes = {
@@ -79,12 +93,21 @@ gASCIICodes = {
         codes = {
             {min = 97, max = 122}, -- ASCII lowercase letters hexadecimal code
             {min = 48, max = 57}, -- ASCII numbers hexadecimal code
+            
         }
     },
     ['binary'] = { 
         name ='binary', 
         codes = {
             {min = 48, max = 49},
+        }
+    },
+    ['lowercase_ponctuation'] = {
+        name ='lowercase_ponctuation', 
+        codes = {
+            {min = 97, max = 122}, -- ASCII lowercase letters hexadecimal code
+            {min = 48, max = 57}, -- ASCII numbers hexadecimal code
+            {min = 58, max = 62}
         }
     },
 }
@@ -99,14 +122,26 @@ gFonts = {
     ['spacy'] = {name = 'spacy', font = love.graphics.newFont('fonts/SpacyStuff.ttf', 16)},
     ['bmrea'] = {name = 'bmrea', font = love.graphics.newFont('fonts/bmrea.ttf', 16)},
     ['invaders'] = {name = 'invaders', font = love.graphics.newFont('fonts/pixel_invaders.ttf', 16)},
-    ['japanese'] = {name = 'japanese', font = love.graphics.newFont('fonts/japanese.ttf', 7)},
+    ['japanese'] = {name = 'japanese', font = love.graphics.newFont('fonts/japanese.ttf', 24)},
     ['small'] = {name = 'small', font = love.graphics.newFont('fonts/font.ttf', 8)},
     ['medium'] = {name = 'medium', font = love.graphics.newFont('fonts/font.ttf', 16)},
     ['medium_large'] = {name = 'medium_large', font = love.graphics.newFont('fonts/font.ttf', 24)},
     ['large'] = {name = 'large', font = love.graphics.newFont('fonts/font.ttf', 32)},
     ['big'] = {name = 'big', font = love.graphics.newFont('fonts/font.ttf', 48)},
-    ['matrix'] = {name = 'big', font = love.graphics.newFont('fonts/matrix.ttf', 32)}
+    ['matrix'] = {name = 'big', font = love.graphics.newFont('fonts/matrix.ttf', 32)},
+    ['elven'] = {name = 'big', font = love.graphics.newFont('fonts/elven.ttf', 24)},
+    ['elven2'] = {name = 'big', font = love.graphics.newFont('fonts/halfelvenbold.ttf', 24)},
+    ['kindergarten'] = {name = 'big', font = love.graphics.newFont('fonts/kindergarten.ttf', 32)},
+    ['norskode'] = {name = 'big', font = love.graphics.newFont('fonts/norskode.ttf', 16)},
+    ['katakana'] = {name = 'big', font = love.graphics.newFont('fonts/katakana.ttf', 42)},
+    ['hiragana'] = {name = 'big', font = love.graphics.newFont('fonts/bd_hiragana_kuro.otf', 42)},
+    ['flow'] = {name = 'flow', font = love.graphics.newFont('fonts/flow.ttf', 28)},
+    ['original'] = {name = 'original', font = love.graphics.newFont('fonts/mCode15.ttf', 36)},
+    ['consolas'] = {name = 'big', font = love.graphics.newFont('fonts/consolas.ttf', 32)}
 }
+
+aFont = gFonts['consolas']
+aASCII = gASCIICodes['alphanumeric']
 
 gMatrixParams = {
 
@@ -116,19 +151,19 @@ gMatrixParams = {
             INFORMATION PARAMETERS
         ]]
 
-        fontName = gFonts['matrix'].name, -- information to show on screen
-        ASCIIType = gASCIICodes['alphanumeric'].name, -- information to show on screen
+        fontName = aFont.name, -- information to show on screen
+        ASCIIType = aASCII.name, -- information to show on screen
         
         --[[ 
             CHAR PARAMETERS
         ]]
         
-        font = gFonts['matrix'].font,  -- char's codeline font
+        font = aFont.font,  -- char's codeline font
         colorVariation = 10, -- color range for saturation and lightness in %
         changingTime = 0.15, -- frequency to change the codeline in seconds
         rgbColor = gRGBColors['green'], -- table that represents a color of char's font:  {r = , g= , b= }
         direction = 'left', -- char's writing direction 
-        ASCIICodes = gASCIICodes['alphanumeric'].codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
+        ASCIICodes = aASCII.codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
         initialAlphaSetup = 255, -- char's initial alpha setup before defaut fade off (first fade off)
         middleAlphaSetup = 150, -- char's final alpha setup after default fade off / char's initial alpha setup before remotion fade off
         finalAlphaSetup = 0, -- char's final alpha setup after remotion fade off
@@ -140,21 +175,21 @@ gMatrixParams = {
             CODE LINE PARAMETERS
         ]]
 
-        widthInChar = math.floor((VIRTUAL_WIDTH)/ gFonts['matrix'].font:getHeight()), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ gFonts['matrix'].font:getHeight()), -- area height where a codeline can be placed measured in chars
+        widthInChar = math.floor((VIRTUAL_WIDTH)/ (aFont.font:getHeight())), -- area width where a codeline can be placed measured in chars
+        heightInChar = math.floor((VIRTUAL_HEIGHT)/ (aFont.font:getHeight())), -- area height where a codeline can be placed measured in chars
         minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
         maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
-        minCodeLineHeightInChar = 10, -- min height in char a code line may have
-        maxCodeLineHeightInChar = 30, -- max height in char a code line may have
+        minCodeLineHeightInChar = 10, --10 min height in char a code line may have
+        maxCodeLineHeightInChar = 30, --30 max height in char a code line may have
 
         --[[ 
             MATRIX FX (SCRIPT) PARAMETERS
         ]]
 
-        minCodeLinesNumberPerAddition = 8, -- 8 minimum code lines can be add in an adition cicle.
+        minCodeLinesNumberPerAddition = 5, -- 8 minimum code lines can be add in an adition cicle.
         maxCodeLinesNumberPerAddition = 10, -- 10 maximum code lines can be add in an adition cicle.
-        minAdditionNumberBeforeWaiting = 10, -- 20 minimum adition cicles must happen before waiting cicle.
-        maxAdditionNumberBeforeWaiting = 15, -- 30 maximum adition cicles must happen before waiting cicle.
+        minAdditionNumberBeforeWaiting = 20, -- 20 minimum adition cicles must happen before waiting cicle.
+        maxAdditionNumberBeforeWaiting = 30, -- 30 maximum adition cicles must happen before waiting cicle.
         infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
     },
 

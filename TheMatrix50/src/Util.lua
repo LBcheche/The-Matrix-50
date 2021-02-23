@@ -220,6 +220,3 @@ function isEven(number)
     return false 
 end
 
-
-
-

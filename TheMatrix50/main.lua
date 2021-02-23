@@ -14,11 +14,12 @@ Moonshine = require 'src/moonshine'
 
 function love.load()
 
-    effect = Moonshine(Moonshine.effects.godsray)--.chain(Moonshine.effects.dmg)
+  effect = Moonshine(Moonshine.effects.godsray)--.chain(Moonshine.effects.godsray)--.chain(Moonshine.effects.crt)
+  --effect2 = Moonshine(Moonshine.effects.scanlines)
     -- effect.glow.strength = 1
     -- effect.glow.min_luma = 0.1
-    -- effect.boxblur.radius_x = 5
-    -- effect.boxblur.radius_y = 5
+    -- effect.boxblur.radius_x = 13.5
+    -- effect.boxblur.radius_y = 13.5
     -- effect.dmg.palette = dark_yellow
 
     -- set random number for RGB in gray scale 
@@ -80,12 +81,17 @@ function love.keyboard.wasPressed(key)
 end
 
 function love.draw()
+    
     --gStateMachine:render()
+
     push:start()
-    effect(function()
-     gStateMachine:render() 
-    end)
-   -- gStateMachine:render()
+ 
+    --love.graphics.setBackgroundColor( 0/255, 246/255, 0/255) 
+  
+    --effect(function()gStateMachine:render()  end)
+ --  effect2(function()gStateMachine:render()  end)
+    
+    gStateMachine:render()
 
     push:finish()
 

@@ -58,9 +58,7 @@ function MatrixChar:init(params)
     self:initializeDefaultFadeOff()
     self:initializeRemotionFadeOff()
 
-    
-    
-    
+   
 
 end
 
@@ -269,7 +267,7 @@ function MatrixChar:print()
     if self.movableBackground then
         self.newX = self.movableBackground:getBackgroundCoordinates(self.movableBackgroundIndex).x + self.x + self.font:getHeight()/2
     else
-        self.newX = self.x + self.font:getHeight()/2
+        self.newX = self.x + (self.font:getHeight())/2
     end
 
     self.newY = self.y + self.font:getHeight()/2
@@ -283,7 +281,7 @@ function MatrixChar:print()
         0,
         self.direction == 'left' and -1 or 1,
         1,
-        math.floor(self.font:getHeight()/2), 
+        math.floor((self.font:getHeight())/2), 
         math.floor(self.font:getHeight()/2)
     )
 --    end)
