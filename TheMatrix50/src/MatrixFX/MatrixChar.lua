@@ -265,12 +265,12 @@ end
 function MatrixChar:print()
 
     if self.movableBackground then
-        self.newX = self.movableBackground:getBackgroundCoordinates(self.movableBackgroundIndex).x + self.x + self.font:getHeight()/2
+        self.newX = self.movableBackground:getBackgroundCoordinates(self.movableBackgroundIndex).x + self.x + gVirtualFontWidth/2
     else
-        self.newX = self.x + (self.font:getHeight())/2
+        self.newX = self.x + gVirtualFontWidth/2
     end
 
-    self.newY = self.y + self.font:getHeight()/2
+    self.newY = self.y + gVirtualFontHeight/2
 
 --    effect(function()
     love.graphics.print(
@@ -281,8 +281,8 @@ function MatrixChar:print()
         0,
         self.direction == 'left' and -1 or 1,
         1,
-        math.floor((self.font:getHeight())/2), 
-        math.floor(self.font:getHeight()/2)
+        math.floor(gVirtualFontWidth/2), 
+        math.floor(gVirtualFontHeight/2)
     )
 --    end)
 
@@ -329,47 +329,6 @@ end
 
 
 
-
--- function MatrixChar:movablePrint()
-
---     love.graphics.print(
---         self.char, 
---         math.floor(self.movableBackground:getBackgroundCoordinates(self.movableBackgroundIndex).x + self.x + self.font:getHeight()/2),
---         math.floor(self.y + self.font:getHeight()/2),
---         0,
---         self.direction == 'left' and -1 or 1,
---         1,
---         math.floor(self.font:getHeight()/2), 
---         math.floor(self.font:getHeight()/2)
---     )
-
--- end
-
--- function MatrixChar:fixedPrint()
-
---     love.graphics.print(
---         self.char, 
---         math.floor(self.x + self.font:getHeight()/2),
---         math.floor(self.y + self.font:getHeight()/2),
---         0,
---         self.direction == 'left' and -1 or 1,
---         1,
---         math.floor(self.font:getHeight()/2), 
---         math.floor(self.font:getHeight()/2)
---     )
-
--- end
-
---[[
-    SETTER FUNCTIONS
-]]
-
--- function MatrixChar:setMovableBackground(mBckg, i)
-
---     self.movableBackground = mBckg
---     self.movableBackgroundIndex = i
-
--- end
 
 
 

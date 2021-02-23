@@ -143,6 +143,13 @@ gFonts = {
 aFont = gFonts['consolas']
 aASCII = gASCIICodes['alphanumeric']
 
+
+FONT_DELTA_WIDHT = 0
+FONT_DELTA_HEIGHT = 0
+
+gVirtualFontWidth = aFont.font:getHeight() + FONT_DELTA_WIDHT
+gVirtualFontHeight = aFont.font:getHeight() + FONT_DELTA_HEIGHT
+
 gMatrixParams = {
 
     ['original'] = {
@@ -175,8 +182,8 @@ gMatrixParams = {
             CODE LINE PARAMETERS
         ]]
 
-        widthInChar = math.floor((VIRTUAL_WIDTH)/ (aFont.font:getHeight())), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ (aFont.font:getHeight())), -- area height where a codeline can be placed measured in chars
+        widthInChar = math.floor((VIRTUAL_WIDTH)/ (gVirtualFontWidth)), -- area width where a codeline can be placed measured in chars
+        heightInChar = math.floor((VIRTUAL_HEIGHT)/ (gVirtualFontHeight)), -- area height where a codeline can be placed measured in chars
         minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
         maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
         minCodeLineHeightInChar = 10, --10 min height in char a code line may have
@@ -193,246 +200,6 @@ gMatrixParams = {
         infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
     },
 
-    ['alien01'] = {
-
-        --[[ 
-            INFORMATION PARAMETERS
-        ]]
-
-        fontName = gFonts['SUPERPHU'].name, -- information to show on screen
-        ASCIIType = gASCIICodes['alphanumeric'].name, -- information to show on screen
-        
-        --[[ 
-            CHAR PARAMETERS
-        ]]
-        
-        font = gFonts['SUPERPHU'].font,  -- char's codeline font
-        colorVariation = 1, -- color range for saturation and lightness in %
-        changingTime = 0.15, -- frequency to change the codeline in seconds
-        rgbColor = gRGBColors['purple'], -- table that represents a color of char's font:  {r = , g= , b= }
-        direction = 'left', -- char's writing direction 
-        ASCIICodes = gASCIICodes['alphanumeric'].codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
-        initialAlphaSetup = 255, -- char's initial alpha setup before defaut fade off (first fade off)
-        middleAlphaSetup = 150, -- char's final alpha setup after default fade off / char's initial alpha setup before remotion fade off
-        finalAlphaSetup = 0, -- char's final alpha setup after remotion fade off
-        defaultFadeOffDelay = 0.7, -- default fade off delay in seconds
-        defaultFadeOffSpeed = 60, -- default fade off speed in dt
-        remotionFadeOffSpeed = 300, -- remotion fade off speed in dt
-
-        --[[ 
-            CODE LINE PARAMETERS
-        ]]
-
-        widthInChar = math.floor((VIRTUAL_WIDTH)/ gFonts['SUPERPHU'].font:getHeight()), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ gFonts['SUPERPHU'].font:getHeight()), -- area height where a codeline can be placed measured in chars
-        minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
-        maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
-        minCodeLineHeightInChar = 10, -- min height in char a code line may have
-        maxCodeLineHeightInChar = 20, -- max height in char a code line may have
-
-        --[[ 
-            MATRIX FX (SCRIPT) PARAMETERS
-        ]]
-
-        minCodeLinesNumberPerAddition = 8, -- minimum code lines can be add in an adition cicle.
-        maxCodeLinesNumberPerAddition = 10, -- maximum code lines can be add in an adition cicle.
-        minAdditionNumberBeforeWaiting = 20, -- minimum adition cicles must happen before waiting cicle.
-        maxAdditionNumberBeforeWaiting = 30, -- maximum adition cicles must happen before waiting cicle.
-        infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
-    },
-
-    ['invaders'] = {
-
-        --[[ 
-            INFORMATION PARAMETERS
-        ]]
-
-        fontName = gFonts['invaders'].name, -- information to show on screen
-        ASCIIType = gASCIICodes['alphanumeric'].name, -- information to show on screen
-        
-        --[[ 
-            CHAR PARAMETERS
-        ]]
-        
-        font = gFonts['invaders'].font,  -- char's codeline font
-        colorVariation = 1, -- color range for saturation and lightness in %
-        changingTime = 0.15, -- frequency to change the codeline in seconds
-        rgbColor = gRGBColors['red'], -- table that represents a color of char's font:  {r = , g= , b= }
-        direction = 'left', -- char's writing direction 
-        ASCIICodes = gASCIICodes['alphanumeric'].codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
-        initialAlphaSetup = 255, -- char's initial alpha setup before defaut fade off (first fade off)
-        middleAlphaSetup = 150, -- char's final alpha setup after default fade off / char's initial alpha setup before remotion fade off
-        finalAlphaSetup = 0, -- char's final alpha setup after remotion fade off
-        defaultFadeOffDelay = 0.7, -- default fade off delay in seconds
-        defaultFadeOffSpeed = 60, -- default fade off speed in dt
-        remotionFadeOffSpeed = 300, -- remotion fade off speed in dt
-
-        --[[ 
-            CODE LINE PARAMETERS
-        ]]
-
-        widthInChar = math.floor((VIRTUAL_WIDTH)/ gFonts['invaders'].font:getHeight()), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ gFonts['invaders'].font:getHeight()), -- area height where a codeline can be placed measured in chars
-        minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
-        maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
-        minCodeLineHeightInChar = 10, -- min height in char a code line may have
-        maxCodeLineHeightInChar = 20, -- max height in char a code line may have
-
-        --[[ 
-            MATRIX FX (SCRIPT) PARAMETERS
-        ]]
-
-        minCodeLinesNumberPerAddition = 8, -- minimum code lines can be add in an adition cicle.
-        maxCodeLinesNumberPerAddition = 10, -- maximum code lines can be add in an adition cicle.
-        minAdditionNumberBeforeWaiting = 20, -- minimum adition cicles must happen before waiting cicle.
-        maxAdditionNumberBeforeWaiting = 30, -- maximum adition cicles must happen before waiting cicle.
-        infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
-    },
-
-
-    ['binary'] = {
-
-        --[[ 
-            INFORMATION PARAMETERS
-        ]]
-
-        fontName = gFonts['small'].name, -- information to show on screen
-        ASCIIType = gASCIICodes['binary'].name, -- information to show on screen
-        
-        --[[ 
-            CHAR PARAMETERS
-        ]]
-        
-        font = gFonts['small'].font,  -- char's codeline font
-        colorVariation = 1, -- color range for saturation and lightness in %
-        changingTime = 0.15, -- frequency to change the codeline in seconds
-        rgbColor = gRGBColors['red'], -- table that represents a color of char's font:  {r = , g= , b= }
-        direction = 'left', -- char's writing direction 
-        ASCIICodes = gASCIICodes['binary'].codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
-        initialAlphaSetup = 255, -- char's initial alpha setup before defaut fade off (first fade off)
-        middleAlphaSetup = 150, -- char's final alpha setup after default fade off / char's initial alpha setup before remotion fade off
-        finalAlphaSetup = 0, -- char's final alpha setup after remotion fade off
-        defaultFadeOffDelay = 0.7, -- default fade off delay in seconds
-        defaultFadeOffSpeed = 60, -- default fade off speed in dt
-        remotionFadeOffSpeed = 300, -- remotion fade off speed in dt
-
-        --[[ 
-            CODE LINE PARAMETERS
-        ]]
-
-        widthInChar = math.floor((VIRTUAL_WIDTH)/ gFonts['small'].font:getHeight()), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ gFonts['small'].font:getHeight()), -- area height where a codeline can be placed measured in chars
-        minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
-        maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
-        minCodeLineHeightInChar = 10, -- min height in char a code line may have
-        maxCodeLineHeightInChar = 20, -- max height in char a code line may have
-
-        --[[ 
-            MATRIX FX (SCRIPT) PARAMETERS
-        ]]
-
-        minCodeLinesNumberPerAddition = 8, -- minimum code lines can be add in an adition cicle.
-        maxCodeLinesNumberPerAddition = 10, -- maximum code lines can be add in an adition cicle.
-        minAdditionNumberBeforeWaiting = 20, -- minimum adition cicles must happen before waiting cicle.
-        maxAdditionNumberBeforeWaiting = 30, -- maximum adition cicles must happen before waiting cicle.
-        infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
-    },
-
-    ['squared'] = {
-
-        --[[ 
-            INFORMATION PARAMETERS
-        ]]
-
-        fontName = gFonts['pixel'].name, -- information to show on screen
-        ASCIIType = gASCIICodes['alphanumeric'].name, -- information to show on screen
-        
-        --[[ 
-            CHAR PARAMETERS
-        ]]
-        
-        font = gFonts['pixel'].font,  -- char's codeline font
-        colorVariation = 1, -- color range for saturation and lightness in %
-        changingTime = 0.15, -- frequency to change the codeline in seconds
-        rgbColor = gRGBColors['orange'], -- table that represents a color of char's font:  {r = , g= , b= }
-        direction = 'left', -- char's writing direction 
-        ASCIICodes = gASCIICodes['alphanumeric'].codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
-        initialAlphaSetup = 255, -- char's initial alpha setup before defaut fade off (first fade off)
-        middleAlphaSetup = 150, -- char's final alpha setup after default fade off / char's initial alpha setup before remotion fade off
-        finalAlphaSetup = 0, -- char's final alpha setup after remotion fade off
-        defaultFadeOffDelay = 0.7, -- default fade off delay in seconds
-        defaultFadeOffSpeed = 60, -- default fade off speed in dt
-        remotionFadeOffSpeed = 300, -- remotion fade off speed in dt
-
-        --[[ 
-            CODE LINE PARAMETERS
-        ]]
-
-        widthInChar = math.floor((VIRTUAL_WIDTH)/ gFonts['pixel'].font:getHeight()), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ gFonts['pixel'].font:getHeight()), -- area height where a codeline can be placed measured in chars
-        minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
-        maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
-        minCodeLineHeightInChar = 10, -- min height in char a code line may have
-        maxCodeLineHeightInChar = 20, -- max height in char a code line may have
-
-        --[[ 
-            MATRIX FX (SCRIPT) PARAMETERS
-        ]]
-
-        minCodeLinesNumberPerAddition = 8, -- minimum code lines can be add in an adition cicle.
-        maxCodeLinesNumberPerAddition = 10, -- maximum code lines can be add in an adition cicle.
-        minAdditionNumberBeforeWaiting = 20, -- minimum adition cicles must happen before waiting cicle.
-        maxAdditionNumberBeforeWaiting = 30, -- maximum adition cicles must happen before waiting cicle.
-        infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
-    },
-
-    ['picture'] = {
-
-        --[[ 
-            INFORMATION PARAMETERS
-        ]]
-
-        fontName = gFonts['pixel'].name, -- information to show on screen
-        ASCIIType = gASCIICodes['alphanumeric'].name, -- information to show on screen
-        
-        --[[ 
-            CHAR PARAMETERS
-        ]]
-        
-        font = gFonts['pixel'].font,  -- char's codeline font
-        colorVariation = 1, -- color range for saturation and lightness in %
-        changingTime = 0.15, -- frequency to change the codeline in seconds
-        rgbColor = gRGBColors['purple'], -- table that represents a color of char's font:  {r = , g= , b= }
-        direction = 'left', -- char's writing direction 
-        ASCIICodes = gASCIICodes['alphanumeric'].codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
-        initialAlphaSetup = 255, -- char's initial alpha setup before defaut fade off (first fade off)
-        middleAlphaSetup = 150, -- char's final alpha setup after default fade off / char's initial alpha setup before remotion fade off
-        finalAlphaSetup = 0, -- char's final alpha setup after remotion fade off
-        defaultFadeOffDelay = 0.7, -- default fade off delay in seconds
-        defaultFadeOffSpeed = 60, -- default fade off speed in dt
-        remotionFadeOffSpeed = 300, -- remotion fade off speed in dt
-
-        --[[ 
-            CODE LINE PARAMETERS
-        ]]
-
-        widthInChar = math.floor((VIRTUAL_WIDTH)/ gFonts['pixel'].font:getHeight()), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ gFonts['pixel'].font:getHeight()), -- area height where a codeline can be placed measured in chars
-        minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
-        maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
-        minCodeLineHeightInChar = 10, -- min height in char a code line may have
-        maxCodeLineHeightInChar = 20, -- max height in char a code line may have
-
-        --[[ 
-            MATRIX FX (SCRIPT) PARAMETERS
-        ]]
-
-        minCodeLinesNumberPerAddition = 8, -- minimum code lines can be add in an adition cicle.
-        maxCodeLinesNumberPerAddition = 10, -- maximum code lines can be add in an adition cicle.
-        minAdditionNumberBeforeWaiting = 20, -- minimum adition cicles must happen before waiting cicle.
-        maxAdditionNumberBeforeWaiting = 30, -- maximum adition cicles must happen before waiting cicle.
-        infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
-    }
 }
 
 

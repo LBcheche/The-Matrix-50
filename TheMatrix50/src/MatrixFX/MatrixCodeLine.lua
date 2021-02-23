@@ -93,8 +93,8 @@ end
 -- Function responsable for setup a random coordinates for a this code line
 function MatrixCodeLine:initializeCoordinates()
 
-    self.x = math.random(0, self.widthInChar - 1) * (self.font:getHeight())
-    self.y = math.random(0,math.floor(self.heightInChar - self.codeLineHeightInChar)) * (self.font:getHeight())
+    self.x = math.random(0, self.widthInChar - 1) * (gVirtualFontWidth)
+    self.y = math.random(0,math.floor(self.heightInChar - self.codeLineHeightInChar)) * (gVirtualFontHeight)
 
 end
 
@@ -240,7 +240,7 @@ end
 -- Once matrix effect is vertical, just changes y position. 
 function MatrixCodeLine:setNextCoordinates()
 
-    self.y = self.y + self.font:getHeight()
+    self.y = self.y + gVirtualFontHeight
 
 end
 

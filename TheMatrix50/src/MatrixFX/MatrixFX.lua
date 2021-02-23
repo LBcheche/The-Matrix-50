@@ -340,7 +340,7 @@ end
 -- Function responsable for return Matrix Height
 function MatrixFX:getHeight()
 
-    return self.heightInChar * self.font:getHeight()
+    return self.heightInChar * gVirtualFontHeight
 
 end
 
