@@ -209,8 +209,6 @@ function HSLtoRGB(params)
 end
 
 
-
-
 function isEven(number)
     
     if number % 2 == 0 then
@@ -218,5 +216,16 @@ function isEven(number)
     end
     
     return false 
+end
+
+function HEXtoRGB(hexColor)
+
+    hexColor = hexColor:gsub("#","")
+    red = tonumber("0x"..hexColor:sub(1,2))
+    green = tonumber("0x"..hexColor:sub(3,4))
+    blue = tonumber("0x"..hexColor:sub(5,6))
+
+    return {r = red, g = green, b = blue}
+
 end
 

@@ -39,7 +39,8 @@ function MatrixChar:init(params)
     self.remotionFadeOffSpeed = params.remotionFadeOffSpeed
     self.defaultFadeOffSpeed = params.defaultFadeOffSpeed
     self.defaultFadeOffDelay = params.defaultFadeOffDelay
-
+    self.unchangedCharPercentage = params.unchangedCharPercentage
+    
     self:initializeChangingTimer()
     --self:setASCIICodes()
 
@@ -58,6 +59,8 @@ function MatrixChar:init(params)
     self:initializeDefaultFadeOff()
     self:initializeRemotionFadeOff()
 
+    self.randomizeNextChange = math.random(100)
+    
    
 
 end
@@ -133,11 +136,11 @@ function MatrixChar:setStartColor()
 
     local newColor = RGBtoHSL(self.RGBColor)
 
-    newColor.s = math.min(1, math.max(0, newColor.s - 0.8))
-    newColor.l = math.min(1, math.max(0, newColor.l + 0.8))
+    newColor.s = math.min(1, math.max(0, newColor.s - 0.7))
+    newColor.l = math.min(1, math.max(0, newColor.l + 0.7))
 
     self.color = HSLtoRGB(newColor) 
-
+    
 end
 
 
@@ -153,12 +156,18 @@ end
 
 function MatrixChar:updateCharChanging(dt)
 
+    
+
     if self.charChanged then
 
-        self.changingTimer:setStart()
-        self.charChanged = false
+        if self.randomizeNextChange > self.unchangedCharPercentage then
 
-    else
+            self.changingTimer:setStart()
+            self.charChanged = false
+
+        end
+
+    else 
 
         self.changingTimer:update(dt)
 

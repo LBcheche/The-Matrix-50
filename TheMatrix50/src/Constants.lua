@@ -25,8 +25,8 @@ WINDOW_HEIGHT = 1080
 -- VIRTUAL_WIDTH = 640
 -- VIRTUAL_HEIGHT = 360
 
-VIRTUAL_WIDTH = 1920
-VIRTUAL_HEIGHT = 1080
+VIRTUAL_WIDTH = 1920--1920
+VIRTUAL_HEIGHT = 1080--1080
 
 -- screen tile width and height in pixels
 SCREEN_TILE_SIZE = 16
@@ -57,10 +57,12 @@ gColors = {
     ['green'] = {106/255, 153/255, 105/255, 255/255},
 }
 
+
+
 gRGBColors = {
    -- ['green'] = {name = 'green', r = 107, g = 193, b = 190},
    -- ['green'] = {name = 'green', r = 82, g = 234, b = 103},
-    ['green'] = {name = 'green', r = 0, g = 246, b =0},
+    ['green'] = {name = 'green', r = 0, g = 255, b =0},
     ['pink'] = {name = 'pink',r = 235, g = 18, b =123},
     ['white'] = {name = 'white',r = 255, g = 255, b =255},
     ['red'] = {name = 'red',r = 156 , g = 30, b = 64},
@@ -83,16 +85,23 @@ gRGBColors = {
     ['vscode9'] = {name = 'vscode9', r= 209, g=105, b=105},
     ['vscode10'] = {name = 'vscode10', r=197 , g=134, b=192},
     ['vscode11'] = {name = 'vscode11', r=220 , g=220, b=170},
-    ['vscode12'] = {name = 'vscode12', r= 78, g=201, b=176}
+    ['vscode12'] = {name = 'vscode12', r= 78, g=201, b=176},
 
+    ['darkLightPurple'] = {name = 'darkLightPurple', r=138 , g=44, b=255},
+    ['darkLightPink'] = {name = 'darkLightPink', r= 255, g=77, b=255},
+
+    ['brown'] = {name = 'brown', r= 65, g=46, b=29},
+
+   
 }
 
 gASCIICodes = {
     ['alphanumeric'] = {
         name ='alphanumeric', 
         codes = {
-            {min = 97, max = 122}, -- ASCII lowercase letters hexadecimal code
-            {min = 48, max = 57}, -- ASCII numbers hexadecimal code
+            {min = 97, max = 122}, -- ASCII lowercase letters decimal code
+            {min = 48, max = 57}, -- ASCII numbers decimal code
+           -- {min = 176, max = 178},
             
         }
     },
@@ -105,9 +114,19 @@ gASCIICodes = {
     ['lowercase_ponctuation'] = {
         name ='lowercase_ponctuation', 
         codes = {
-            {min = 97, max = 122}, -- ASCII lowercase letters hexadecimal code
-            {min = 48, max = 57}, -- ASCII numbers hexadecimal code
-            {min = 58, max = 62}
+          --  {min = 97, max = 122}, -- ASCII lowercase letters decimal code
+           -- {min = 48, max = 57}, -- ASCII numbers decimal code
+           -- {min = 58, max = 62},
+            {min = 65, max = 90} -- ASCII uppercase letters decimal code
+        }
+    },
+
+    ['matrix_original'] = {
+        name ='matrix_original', 
+        codes = {
+            {min = 97, max = 122}, -- ASCII lowercase letters decimal code
+            {min = 48, max = 49}, -- ASCII binary numbers decimal code
+            {min = 65, max = 90} -- ASCII uppercase letters decimal code
         }
     },
 }
@@ -120,9 +139,9 @@ gFonts = {
     --['TINYBBA_'] = {name = 'TINYBBA_', font = love.graphics.newFont('fonts/TINYBBA_.ttf', 10)},
     ['pixel'] = {name = 'pixel', font = love.graphics.newFont('fonts/pixel.ttf', 16)},
     ['spacy'] = {name = 'spacy', font = love.graphics.newFont('fonts/SpacyStuff.ttf', 16)},
-    ['bmrea'] = {name = 'bmrea', font = love.graphics.newFont('fonts/bmrea.ttf', 16)},
+    ['bmrea'] = {name = 'bmrea', font = love.graphics.newFont('fonts/bmrea.ttf', 24)},
     ['invaders'] = {name = 'invaders', font = love.graphics.newFont('fonts/pixel_invaders.ttf', 16)},
-    ['japanese'] = {name = 'japanese', font = love.graphics.newFont('fonts/japanese.ttf', 24)},
+    ['japanese'] = {name = 'japanese', font = love.graphics.newFont('fonts/japanese.ttf', 32)},
     ['small'] = {name = 'small', font = love.graphics.newFont('fonts/font.ttf', 8)},
     ['medium'] = {name = 'medium', font = love.graphics.newFont('fonts/font.ttf', 16)},
     ['medium_large'] = {name = 'medium_large', font = love.graphics.newFont('fonts/font.ttf', 24)},
@@ -135,17 +154,17 @@ gFonts = {
     ['norskode'] = {name = 'big', font = love.graphics.newFont('fonts/norskode.ttf', 16)},
     ['katakana'] = {name = 'big', font = love.graphics.newFont('fonts/katakana.ttf', 42)},
     ['hiragana'] = {name = 'big', font = love.graphics.newFont('fonts/bd_hiragana_kuro.otf', 42)},
-    ['flow'] = {name = 'flow', font = love.graphics.newFont('fonts/flow.ttf', 28)},
-    ['original'] = {name = 'original', font = love.graphics.newFont('fonts/mCode15.ttf', 36)},
-    ['consolas'] = {name = 'big', font = love.graphics.newFont('fonts/consolas.ttf', 32)}
+    ['flow'] = {name = 'flow', font = love.graphics.newFont('fonts/Flow.ttf', 36)},
+    ['matrix_original'] = {name = 'matrix_original', font = love.graphics.newFont('fonts/matrix_original.ttf', 18)},
+    ['consolas'] = {name = 'big', font = love.graphics.newFont('fonts/consolas.ttf', 42)}
 }
 
-aFont = gFonts['consolas']
+aFont = gFonts['japanese']
 aASCII = gASCIICodes['alphanumeric']
 
 
-FONT_DELTA_WIDHT = 0
-FONT_DELTA_HEIGHT = 0
+FONT_DELTA_WIDHT = 1--10
+FONT_DELTA_HEIGHT = 1--10
 
 gVirtualFontWidth = aFont.font:getHeight() + FONT_DELTA_WIDHT
 gVirtualFontHeight = aFont.font:getHeight() + FONT_DELTA_HEIGHT
@@ -166,8 +185,8 @@ gMatrixParams = {
         ]]
         
         font = aFont.font,  -- char's codeline font
-        colorVariation = 10, -- color range for saturation and lightness in %
-        changingTime = 0.15, -- frequency to change the codeline in seconds
+        colorVariation = 0, -- color range for saturation and lightness in %
+        changingTime = 0.30,--0.15, -- frequency to change the codeline in seconds
         rgbColor = gRGBColors['green'], -- table that represents a color of char's font:  {r = , g= , b= }
         direction = 'left', -- char's writing direction 
         ASCIICodes = aASCII.codes, -- list of tables that represents possible chars for a Matrix Char: Example for ASCIICode table {{min = , max = },{min = , max = },{min = , max = },  }
@@ -175,28 +194,29 @@ gMatrixParams = {
         middleAlphaSetup = 150, -- char's final alpha setup after default fade off / char's initial alpha setup before remotion fade off
         finalAlphaSetup = 0, -- char's final alpha setup after remotion fade off
         defaultFadeOffDelay = 0.7, -- default fade off delay in seconds
-        defaultFadeOffSpeed = 60, -- default fade off speed in dt
+        defaultFadeOffSpeed = 30, -- default fade off speed in dt
         remotionFadeOffSpeed = 300, -- remotion fade off speed in dt
-
+        unchangedCharPercentage = 70,
+        
         --[[ 
             CODE LINE PARAMETERS
         ]]
 
         widthInChar = math.floor((VIRTUAL_WIDTH)/ (gVirtualFontWidth)), -- area width where a codeline can be placed measured in chars
-        heightInChar = math.floor((VIRTUAL_HEIGHT)/ (gVirtualFontHeight)), -- area height where a codeline can be placed measured in chars
+        heightInChar = math.floor((VIRTUAL_HEIGHT)/ (gVirtualFontHeight) - 1), -- area height where a codeline can be placed measured in chars
         minTimeMilisec = 1000, -- minimum time for code line's wating time state in milisecond
         maxTimeMilisec = 2000, -- maximum time for code line's wating time state in milisecond
-        minCodeLineHeightInChar = 10, --10 min height in char a code line may have
-        maxCodeLineHeightInChar = 30, --30 max height in char a code line may have
-
+        minCodeLineHeightInChar = 10,--42, --10 min height in char a code line may have
+        maxCodeLineHeightInChar = 35,--42, --30 max height in char a code line may have
+        
         --[[ 
             MATRIX FX (SCRIPT) PARAMETERS
         ]]
-
-        minCodeLinesNumberPerAddition = 5, -- 8 minimum code lines can be add in an adition cicle.
-        maxCodeLinesNumberPerAddition = 10, -- 10 maximum code lines can be add in an adition cicle.
-        minAdditionNumberBeforeWaiting = 20, -- 20 minimum adition cicles must happen before waiting cicle.
-        maxAdditionNumberBeforeWaiting = 30, -- 30 maximum adition cicles must happen before waiting cicle.
+        startsFromTop = true,
+        minCodeLinesNumberPerAddition = 3,--2, -- 8 minimum code lines can be add in an adition cicle.
+        maxCodeLinesNumberPerAddition = 10,--4, -- 10 maximum code lines can be add in an adition cicle.
+        minAdditionNumberBeforeWaiting = 10,--10, -- 20 minimum adition cicles must happen before waiting cicle.
+        maxAdditionNumberBeforeWaiting = 20,--20, -- 30 maximum adition cicles must happen before waiting cicle.
         infinitable = true, -- setup if after an addition and waiting cicle, Matrix FX will restart the cicle again.
     },
 

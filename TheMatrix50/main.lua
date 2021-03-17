@@ -14,13 +14,9 @@ Moonshine = require 'src/moonshine'
 
 function love.load()
 
-  effect = Moonshine(Moonshine.effects.godsray)--.chain(Moonshine.effects.godsray)--.chain(Moonshine.effects.crt)
-  --effect2 = Moonshine(Moonshine.effects.scanlines)
-    -- effect.glow.strength = 1
-    -- effect.glow.min_luma = 0.1
-    -- effect.boxblur.radius_x = 13.5
-    -- effect.boxblur.radius_y = 13.5
-    -- effect.dmg.palette = dark_yellow
+  effect = Moonshine(Moonshine.effects.dmg)--.chain(Moonshine.effects.crt)--.chain(Moonshine.effects.crt)
+
+
 
     -- set random number for RGB in gray scale 
     math.randomseed(os.time())
@@ -28,11 +24,6 @@ function love.load()
     -- initialize our nearest-neighbor filter
     love.graphics.setDefaultFilter('nearest', 'nearest')
 
-    -- app window title
-    -- love.window.setTitle('The Matrix 50')
-    -- love.window.setFullscreen( true )
-    -- love.window.maximize()
-    -- initialize our virtual resolution
  
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         vsync = true,
@@ -49,6 +40,8 @@ function love.load()
 
     love.keyboard.keysPressed = {}
 
+   
+
 end
 
 
@@ -58,6 +51,8 @@ function love.update(dt)
     gStateMachine:update(dt)
 
     love.keyboard.keysPressed = {}
+
+    effect.dmg.palette = 'gameboy_dark'
 end
 
 
@@ -83,19 +78,19 @@ end
 function love.draw()
     
     --gStateMachine:render()
-
+   
     push:start()
- 
-    --love.graphics.setBackgroundColor( 0/255, 246/255, 0/255) 
-  
-    --effect(function()gStateMachine:render()  end)
- --  effect2(function()gStateMachine:render()  end)
-    
-    gStateMachine:render()
 
+    
+        --love.graphics.draw(backgroundImage, 0, 0)
+        effect(function()gStateMachine:render()  end)
+        --effect2(function()gStateMachine:render()  end)
+        
+       -- gStateMachine:render()
+        
     push:finish()
 
-    
+    --love.graphics.setBackgroundColor( 25/255,  25/255, 25/255, 1)
     
 end
 

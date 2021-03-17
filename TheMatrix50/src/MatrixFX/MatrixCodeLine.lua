@@ -38,6 +38,8 @@ function MatrixCodeLine:init(params)
 
     self.movableBackground = params.movableBackground or nil
     self.movableBackgroundIndex = params.movableBackgroundIndex or nil
+    self.unchangedCharPercentage = params.unchangedCharPercentage
+    self.startsFromTop = params.startsFromTop
 
     -- LINE CODE PARAMETERS
     self.widthInChar = params.widthInChar -- area width  where a codeline can be placed measured in chars
@@ -94,8 +96,12 @@ end
 function MatrixCodeLine:initializeCoordinates()
 
     self.x = math.random(0, self.widthInChar - 1) * (gVirtualFontWidth)
-    self.y = math.random(0,math.floor(self.heightInChar - self.codeLineHeightInChar)) * (gVirtualFontHeight)
 
+    if self.startsFromTop == true then 
+        self.y = 0
+    else
+        self.y = math.random(0,math.floor(self.heightInChar - self.codeLineHeightInChar)) * (gVirtualFontHeight)
+    end
 end
 
 
@@ -199,7 +205,10 @@ end
 
 function MatrixCodeLine:chooseColor()
 
-    self.allColors = {"vscode1","vscode1", "vscode1","vscode2","vscode3","vscode4","vscode5","vscode6","vscode7","vscode8","vscode8","vscode8","vscode9", "vscode10","vscode10","vscode10", "vscode11", "vscode12"}--{"pink", "purple", "blue","green", "yellow"}
+    --self.allColors = {"vscode1","vscode1","vscode2","vscode3","vscode4","vscode5","vscode6","vscode7","vscode8","vscode8","vscode9", "vscode10","vscode10", "vscode11"}
+    --{"pink", "purple", "blue","green", "yellow"}
+    --self.allColors = {"darkLightPink","darkLightPurple"}
+    self.allColors = {"red","brown", "black"}
     self.rgbColor = gRGBColors[self.allColors[math.random(#self.allColors)]]
 
 end
@@ -207,7 +216,7 @@ end
 -- Function responsable for create a new Matrix Char object
 function MatrixCodeLine:createAChar()
 
---   self:chooseColor()
+  -- self:chooseColor()
 
     return MatrixChar(
         {
@@ -228,7 +237,7 @@ function MatrixCodeLine:createAChar()
             remotionFadeOffSpeed = self.remotionFadeOffSpeed,
             defaultFadeOffSpeed = self.defaultFadeOffSpeed,
             defaultFadeOffDelay = self.defaultFadeOffDelay,
-          
+            unchangedCharPercentage = self.unchangedCharPercentage,
         }
     )
 

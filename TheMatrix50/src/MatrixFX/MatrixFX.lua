@@ -30,6 +30,8 @@ function MatrixFX:init(params)
     self.remotionFadeOffSpeed = params.matrixParams.remotionFadeOffSpeed
     self.defaultFadeOffSpeed = params.matrixParams.defaultFadeOffSpeed
     self.defaultFadeOffDelay = params.matrixParams.defaultFadeOffDelay
+    self.unchangedCharPercentage = params.matrixParams.unchangedCharPercentage
+    self.startsFromTop = params.matrixParams.startsFromTop
 
     -- Code Line's Parameters
     self.widthInChar = params.matrixParams.widthInChar -- area width  where a codeline can be placed measured in chars
@@ -173,9 +175,19 @@ end
 
 function MatrixFX:chooseColor()
 
-    self.allColors = {"vscode1","vscode1", "vscode1","vscode2","vscode3","vscode4","vscode8","vscode8","vscode8", "vscode10","vscode10","vscode10", "vscode11", "vscode12"}--{"pink", "purple", "blue","green", "yellow"}
-    self.rgbColor = gRGBColors[self.allColors[math.random(#self.allColors)]]
+    --self.allColors = {"vscode1","vscode2","vscode3","vscode4","vscode8","vscode10", "vscode11"}--{"pink", "purple", "blue","green", "yellow"}
+   
+    self.draculaColors = {
+        "44475A","50FA7B","6272A4","69FF94","8BE9FD","A4FFFF","BD93F9",
+        "D6ACFF","F1FA8C","F8F8F2","FF5555","FF6E6E","FF79C6","FF92DF",
+        "FFB86C","FFFFA5","FFFFFF",
+    }
+   
+    --self.allColors = {"brown", "red", "black"}
+    
+    --self.rgbColor = gRGBColors[self.allColors[math.random(#self.allColors)]]
 
+    self.rgbColor = HEXtoRGB(self.draculaColors[math.random(#self.draculaColors)])
 
 end
 
@@ -184,7 +196,7 @@ end
 -- code line object. 
 function MatrixFX:createCodeLine()
 
-    self:chooseColor()
+ --  self:chooseColor()
 
     return MatrixCodeLine(
         {
@@ -194,6 +206,8 @@ function MatrixFX:createCodeLine()
             rgbColor = self.rgbColor,
             direction = self.direction,
             ASCIICodes = self.ASCIICodes,
+            unchangedCharPercentage = self.unchangedCharPercentage,
+            startsFromTop = self.startsFromTop,
    
             initialAlphaSetup = self.initialAlphaSetup,
             middleAlphaSetup = self.middleAlphaSetup,

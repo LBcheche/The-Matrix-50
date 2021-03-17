@@ -23,9 +23,21 @@ function TheMatrix:init()
         }
     )
 
-    
+    self.startMatrix = false
 
+  self:initializeStartTimer()
 
+end
+
+function TheMatrix:initializeStartTimer()
+
+    self.startTimer = Timer(
+    {
+        time = 10,
+        alarmFunction = function() self.startMatrix = true end,
+    })
+
+    self.startTimer:setStart()
 
 end
 
@@ -40,8 +52,12 @@ end
     UPDATE FUCNTIONS
 ]]
 function TheMatrix:update(dt)
+
+    self.startTimer:update(dt)
  
-    self.matrixFX:update(dt)
+    if self.startMatrix == true then
+        self.matrixFX:update(dt)
+    end
 
 end
 
@@ -60,7 +76,7 @@ end
 -- information aboud Matrix FX
 function TheMatrix:renderData()
 
-    love.graphics.setColor(0,0,0,1)
+    love.graphics.setColor(40,42,54,1)
     love.graphics.rectangle( 'fill', 5, 5, 100, 70 )
 
     love.graphics.setColor({self.matrixParams.rgbColor.r/255, self.matrixParams.rgbColor.g/255, self.matrixParams.rgbColor.b/255, 1})
